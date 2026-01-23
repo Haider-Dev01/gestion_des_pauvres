@@ -1,0 +1,35 @@
+Found 11 PDF files.
+
+--- FILE: AD sprint 1.pdf ---
+Recevoir proposition don (téléphone/email) Créer fiche offre (ADMIN) Saisir infos donateur Saisir type objet + description Don cohérent avec besoins asso?oui n o n Accepter offre Générer référence unique Générer QR code objet Enregistrer dans base Envoyer notification donateur Refuser offre Enregistrer m otif de refus M ettre à jour statut offre Générer PDF fiche navette (MEMBRE) 
+--------------------------------------------------
+--- FILE: AD sprint 2.pdf ---
+Offre acceptée (statut mis à jour) Préparer objet pour stockage Générer QR code unique (ADMIN) Imprimer étiquette QR (format A5) Enregistrer objet dans base de données Associer QR code à référence objet M ettre à jour statut "En stock" Transporteur scanne QR?oui n o n Transporteur scanne QR code (PWA) Choisir nouveau lieu de stockage Confirmer déplacement Mettre à jour localisation objet Enregistrer tim estam p + transporteur Objet reste en stock actuel Admin sélectionne lieu (Garde-meubles/Dépôt-vente) Visualiser liste objets par lieu oui Admin consulte stock?n o n Saisir critères (type, dimensions) Exécuter recherche Afficher résultats filtrés oui Membre recherche objet?n o n 
+--------------------------------------------------
+--- FILE: AD sprint 3.pdf ---
+Objet en stock disponible Destination choisie?don direct vente/dépôt-vente Attribuer à bénéficiaire (ADMIN) Saisir infos bénéficiaire Planifier transport Marquer objet comme "donné" Saisir m ontant estim é Enregistrer m ontant final Calculer commission dépôt-vente oui Vente?n o n M ettre à jour statut redistribution Archiver historique 
+--------------------------------------------------
+--- FILE: AD sprint 4.pdf ---
+Type de consultation?adm in stats public im pact Admin sélectionne période Calculer nombres offres acceptées Générer graphique barres Visiteur accède page /impact Afficher compteurs animés (dons, bénéficiaires) M ontrer répartition par catégorie Adm in clique "Exporter bilan" Générer PDF multi-pages N otifier export term iné oui Action export?n o n Système vérifie correspondances Notifier bénéficiaire (em ail/sim ulation) oui Alerte don match?n o n 
+--------------------------------------------------
+--- FILE: cahier de charge.pdf ---
+      Application de gestion des dons  pour l’association  « L’espoir des pauvres ».          Cahier des charges            page 2 / 12  Application de gestion de dons  Table des matières    1. Objectifs ....................................................................................................................................... 4  2. Besoins non fonctionnels ............................................................................................................. 5  2.1. Interface utilisateur : .............................................................................................................. 5  2.2. Configuration requise par l’application ................................................................................. 5  2.3. Environnement réseau ........................................................................................................... 5  2.4. Développement de l’APPLICATION ......................................................................
+--------------------------------------------------
+--- FILE: diag_de_classe_en pckg vf.pdf ---
+c o m enum s co re secu rity o ffre s stock re d is trib u tio n tran sp o rt s ta ts UserRole ADMIN MEMBRE TRANSPORTEUR DONATEUR BENEFICIAIRE StatutO ffre EN_ATTENTE ACCEPTE REFUSE StatutStock GARDE_MEUBLES DEPOT_VENTE VENTE DONNE StatutTransport PLANIFIE EN_COURS LIVRE NiveauUrgence HAUTE MOYENNE BASSE TypeLieu GARAGE ENTREPOT DEPOT_COMMERCIAL Personne id : Long nom  : String prenom  : String telephone : String adresse : String getNom () : String getTelephone() : String Utilisateur em ail : S tring {unique} motDePasseHash : String role : UserRole estActif : Boolean login(password : String) : Boolean logout() : void isActif() : Boolean Contact em ail : String telephone : String validerFormat() : Boolean AuthenticationService secretKey : String hashPassword(rawPassword : String) : String verifyPassword(rawPassword : String, hash : String) : Boolean generateToken(user : Utilisateur) : String validateToken(token : String) : Boolean AuthorizationService hasRole(user : Utilisateur, role : 
+--------------------------------------------------
+--- FILE: sprint 1 gestion d'offres.pdf ---
+S print 1 - G estion des O ffres N otification S ervice Créer une offre de don Accepter/refuser une offre Générer PDF fiche offre Voir statut de proposition Notifier création offre Notifier décision offre Notifier PDF généré Notifier changem ent statut Adm inistrateur Membre Donateur «trigger» «trigger» «trigger» «trigger» 
+--------------------------------------------------
+--- FILE: sprint 2 tracabilité et stocks.pdf ---
+S print 2 - Traçabilité &  S tocks N otification S ervice Générer QR code unique Scanner QR code Visualiser stock par lieu Rechercher objet par critères Notifier génération QR Notifier scan réussi Notifier mise à jour stock Adm inistrateur Transporteur Membre «trigger» «trigger» «trigger» 
+--------------------------------------------------
+--- FILE: sprint 3 redistribution et destinations.pdf ---
+S print 3 - R edistribution &  D estinations N otification S ervice Enregistrer redistribution Saisir infos comptables Attribuer objet à bénéficiaire Planifier transport N otifier redistribution N otifier attribution objet Notifier planification transport Adm inistrateur Transporteur «trigger» «trigger» «trigger» 
+--------------------------------------------------
+--- FILE: sprint 4 statistiques et dashboard.pdf ---
+S print 4 - S tatistiques &  D ashboard N otification S ervice Voir stats offres acceptées Exporter bilan PDF Voir dashboard public impact Recevoir alerte don match N otifier export term iné Notifier alerte don m atch Adm inistrateur Visiteur Bénéficiaire «trigger» «trigger» 
+--------------------------------------------------
+--- FILE: trello v2.pdf ---
+Product  Backlog  (stories  priorisées)   1.  US1  :  Authentiﬁcation  &  Rôles  (8  points,  MUST,  ADMIN)  2.  US2  :  Création  d'une  offre  de  don  (5  points,  MUST,  ADMIN)  3.  US3  :  Acceptation/Refus  d'offre  (3  points,  MUST,  ADMIN)  4.  US4  :  Génération  PDF  ﬁche  offre  (5  points,  MUST,  MEMBRE)  5.  US5  :  Génération  QR  code  unique  (3  points,  SHOULD,  ADMIN)  6.  US6  :  Scan  QR  code  (8  points,  SHOULD,  TRANSPORTEUR)  7.  US7  :  Gestion  des  stocks  par  lieu  (5  points,  MUST,  ADMIN)  8.  US8  :  Recherche  avancée  d'objets  (5  points,  MUST,  MEMBRE)  9.  US9  :  Redistribution  (don/vente/dépôt-vente)  (5  points,  MUST,  ADMIN)  10.  US10  :  Suivi  comptable  des  ventes  (3  points,  SHOULD,  ADMIN)  11.  US11  :  Dashboard  statistiques  admin  (5  points,  SHOULD,  ADMIN)  12.  US12  :  Dashboard  public  d'impact  (3  points,  COULD,  VISITEUR)  13.  US13  :  Matching  don-bénéﬁciaire  (8  points,  COULD,  SYSTEM)  14.  US14  :  Gestio
+--------------------------------------------------
