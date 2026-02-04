@@ -5,6 +5,7 @@ const offerController = require('../controllers/offerController');
 const stockController = require('../controllers/stockController');
 const distributionController = require('../controllers/distributionController');
 const statsController = require('../controllers/statsController');
+const chatController = require('../controllers/chatController');
 
 // Auth
 router.post('/auth/register', authController.register);
@@ -26,5 +27,8 @@ router.post('/distribution', distributionController.createDistribution);
 
 // Stats
 router.get('/stats', statsController.getStats);
+
+// Chatbot
+router.post('/chat', chatController.processMessage);
 
 module.exports = router;

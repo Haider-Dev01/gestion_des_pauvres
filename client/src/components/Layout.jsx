@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, Outlet, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { LayoutDashboard, Package, Truck, LogOut, Gift } from 'lucide-react';
+import Chatbot from './Chatbot'; // Import Chatbot
 
 const Layout = () => {
   const { user, logout } = useAuth();
@@ -60,9 +61,9 @@ const Layout = () => {
         </div>
       </div>
 
-      {/* Main Content */}
       <div className="flex-1 overflow-auto bg-gray-50 relative">
         <Outlet />
+        <Chatbot /> 
       </div>
     </div>
   );
