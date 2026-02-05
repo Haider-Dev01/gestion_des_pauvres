@@ -6,29 +6,36 @@ const stockController = require('../controllers/stockController');
 const distributionController = require('../controllers/distributionController');
 const statsController = require('../controllers/statsController');
 const chatController = require('../controllers/chatController');
+const verifyToken = require('../middleware/authMiddleware');
+const authorize = require('../middleware/roleMiddleware');
 
-// Auth
+// Auth (Public)
 router.post('/auth/register', authController.register);
 router.post('/auth/login', authController.login);
 
-// Offers
-router.post('/offers', offerController.createOffer);
-router.get('/offers', offerController.getOffers);
-router.put('/offers/:id/status', offerController.updateOfferStatus);
-router.get('/offers/:id/pdf', offerController.generatePDF);
+// Offers (Authenticated users)
+router.post('/offers', verifyToken, offerController.createOffer);
+router.get('/offers', verifyToken, offerController.getOffers);
+router.put('/offers/:id/status', verifyToken, authorize('ADMIN'), offerController.updateOfferStatus); // Only Admin approves
+router.get('/offers/:id/pdf', verifyToken, offerController.generatePDF);
 
-// Stock
-router.get('/stock', stockController.getStock);
-router.post('/stock/:id/qrcode', stockController.generateQRCode);
-router.put('/stock/:id/location', stockController.updateLocation);
+// Stock (Admin & Transporteur)
+router.get('/stock', verifyToken, authorize(['ADMIN', 'TRANSPORTEUR']), stockController.getStock);
+router.post('/stock/:id/qrcode', verifyToken, authorize(['ADMIN', 'TRANSPORTEUR']), stockController.generateQRCode);
+router.put('/stock/:id/location', verifyToken, authorize(['ADMIN', 'TRANSPORTEUR']), stockController.updateLocation);
 
-// Distribution
-router.post('/distribution', distributionController.createDistribution);
+// Distribution (Admin only)
+router.post('/distribution', verifyToken, authorize('ADMIN'), distributionController.createDistribution);
 
-// Stats
-router.get('/stats', statsController.getStats);
+// Stats (Admin only)
+router.get('/stats', verifyToken, authorize('ADMIN'), statsController.getStats);
 
-// Chatbot
+// Chatbot (Public or Auth - decided public for help access, but could be auth)
+// Keeping public for accessibility, or authenticate if context needed.
+// user requested "improve chatbot", keeping public for now to ensure no friction, 
+// unless personalization is needed. Re-reading plan: "Enrichissement de la logique". 
+// Let's keep it public for general queries, but if we had user context it would be better. 
+// For now, leave public to avoid breaking existing "guest" usage if any.
 router.post('/chat', chatController.processMessage);
 
 module.exports = router;

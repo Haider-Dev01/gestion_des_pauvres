@@ -35,8 +35,12 @@ const Layout = () => {
             <nav className="space-y-2">
               <NavLink to="/" icon={<LayoutDashboard size={20} />} label="Tableau de Bord" />
               <NavLink to="/offers" icon={<Package size={20} />} label="Gestion des Offres" />
-              <NavLink to="/stock" icon={<Truck size={20} />} label="Suivi du Stock" />
-              <NavLink to="/redistribution" icon={<Gift size={20} />} label="Redistribution" />
+              {['ADMIN', 'TRANSPORTEUR'].includes(user?.role) && (
+                <NavLink to="/stock" icon={<Truck size={20} />} label="Suivi du Stock" />
+              )}
+              {['ADMIN'].includes(user?.role) && (
+                <NavLink to="/redistribution" icon={<Gift size={20} />} label="Redistribution" />
+              )}
             </nav>
           </div>
         </div>
